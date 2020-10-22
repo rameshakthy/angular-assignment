@@ -1,3 +1,6 @@
+/**
+ * Global constants
+ */
 export const APP_CONSTANTS = {
   TYPE: {
     HISTORY: 'history',

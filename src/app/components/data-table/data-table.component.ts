@@ -25,6 +25,15 @@ export class DataTableComponent implements OnInit, AfterViewInit {
 
   constructor(private cdr: ChangeDetectorRef) {}
 
+  /**
+   * Private methods starts
+   */
+
+  /**
+   * Check for Object data
+   * @param column boolean
+   */
+
   private isObject(column) {
     return (
       this.columnsAlias[column].objectField !== undefined &&
@@ -32,8 +41,20 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     );
   }
 
-  public searchTerm(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
+  /**
+   * Private methods ends
+   */
+
+  /**
+   * Public methods starts
+   */
+
+  /**
+   * SearchTearm methods filters the data-table by given input text
+   * @param searchKey string
+   */
+  public searchTerm(searchKey: Event) {
+    const filterValue = (searchKey.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
 
     if (this.dataSource.paginator) {
@@ -41,6 +62,11 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Retrieve value from JSON data
+   * @param element Object
+   * @param column attribute
+   */
   public getCellField(element, column) {
     if (this.isObject(column)) {
       if (element[column]) {
@@ -51,8 +77,15 @@ export class DataTableComponent implements OnInit, AfterViewInit {
     }
   }
 
+  /**
+   * Public methods ends
+   */
+
   ngOnInit(): void {}
 
+  /**
+   * ngOnChanges for refreshing the data-table component on input change
+   */
   ngOnChanges() {
     if (this.dataSource) {
       this.dataSource.paginator = this.paginator;

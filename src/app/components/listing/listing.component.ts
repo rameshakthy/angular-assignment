@@ -1,30 +1,14 @@
 import {
   Component,
   OnInit,
-  ViewChild,
   AfterViewInit,
   ChangeDetectorRef,
 } from '@angular/core';
 import { HistoryService } from 'src/app/services/history.service';
 import { PayloadService } from 'src/app/services/payload.service';
 import { APP_CONSTANTS } from 'src/app/constants/app-constants';
-import { MatTabChangeEvent } from '@angular/material/tabs';
 
 import { MatTableDataSource } from '@angular/material/table';
-
-// export interface links {
-//   reddit: string | null;
-//   article: string | null;
-//   wikipedia: string | null;
-// }
-// export interface historyData {
-//   id: number;
-//   title: string;
-//   event_date_utc: string;
-//   event_date_unix: string;
-//   flight_number: string;
-//   details: string;
-// }
 
 @Component({
   selector: 'app-listing',
@@ -45,6 +29,14 @@ export class ListingComponent implements OnInit, AfterViewInit {
     private payloadService: PayloadService
   ) {}
 
+  /**
+   * Private methods starts
+   */
+
+  /**
+   * fetchAllHistories : methods initializes the data-table structure
+   * and triggers remote API call
+   */
   private fetchAllHistories() {
     this.columns = ['title', 'event_date_utc', 'flight_number', 'details'];
     this.columnsAlias = {
@@ -68,6 +60,10 @@ export class ListingComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * fetchAllPayloads : methods initializes the data-table structure
+   * and triggers remote API call
+   */
   private fetchAllPayloads() {
     this.columns = [
       'payload_id',
@@ -115,6 +111,19 @@ export class ListingComponent implements OnInit, AfterViewInit {
     });
   }
 
+  /**
+   * Private methods ends
+   */
+
+  /**
+   * Public methods starts
+   */
+
+  /**
+   * loadData method selects the data-table between HISTORY and PAYLOAD
+   * Default selection is HISTORY
+   * @param type string
+   */
   public loadData(type) {
     switch (type) {
       case APP_CONSTANTS.TYPE.HISTORY:
@@ -128,6 +137,10 @@ export class ListingComponent implements OnInit, AfterViewInit {
         return;
     }
   }
+
+  /**
+   * Public methods ends
+   */
 
   ngOnInit(): void {}
 
