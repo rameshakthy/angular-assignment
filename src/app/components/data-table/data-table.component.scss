@@ -1,0 +1,37 @@
+:host ::ng-deep {
+  .table {
+    margin: 0px 35px;
+  }
+  .content {
+    margin: 0px 15px;
+    .mat-form-field {
+      padding: 15px 0px;
+    }
+  }
+}
+
+table {
+  width: 100%;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+td,
+th {
+  text-overflow: ellipsis;
+  padding: 15px !important;
+}
+
+th {
+  top: 70px !important;
+}
+
+.search-field {
+  position: sticky !important;
+  z-index: 200;
+  top: 0px !important;
+  background-color: white;
+}

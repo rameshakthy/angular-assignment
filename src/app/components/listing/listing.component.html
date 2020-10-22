@@ -1,0 +1,16 @@
+<div class="content">
+  <mat-button-toggle-group #group="matButtonToggleGroup" [value]="dataTypes[0]">
+    <ng-container *ngFor="let type of dataTypes">
+      <mat-button-toggle [value]="type" (change)="loadData(type)">
+        {{ type | titlecase }}
+      </mat-button-toggle>
+    </ng-container>
+  </mat-button-toggle-group>
+
+  <app-data-table
+    [dataSource]="dataSource"
+    [displayedColumns]="columns"
+    [columnsAlias]="columnsAlias"
+  >
+  </app-data-table>
+</div>
